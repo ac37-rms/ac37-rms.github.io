@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+import "messages/sensor_data/gnss_position.proto";
+
+/**
+  A target location is a GNSS position with SDS specific identifiers.
+  
+  These are used by the Race Director for conveying intended buoy location(s), and by Safety Officer(s) to convey safety buoy location(s).
+*/
+message TargetLocation {
+  int64 id = 1; // the computer friendly name
+  string name = 2; // the human friendly name
+  GNSSPosition location = 3; // the target gnss position
+}

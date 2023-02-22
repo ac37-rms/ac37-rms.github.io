@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+import "responses/subscription_response.proto";
+import "responses/write_response.proto";
+import "messages/sensor_data.proto";
+import "messages/race.proto";
+
+/**
+  A message from the SDS. This may include a request response, sensor data, or race data.
+
+  Basic client usage should deserialise to this message.
+ */
+message Message {
+  string correlation_id = 1; // a optional unique identifier matching a requests' correlation_id
+  
+  oneof message {
+    SubscriptionResponse subscription_response = 2; // a subscription response
+    WriteResponse write_response = 3; // a sensor data write response
+    SensorData sensor_data = 4; // a single sensor data point
+    Race race = 5; // a race configuration update
+  }
+}

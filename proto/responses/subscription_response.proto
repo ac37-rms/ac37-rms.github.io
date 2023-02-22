@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+import "responses/result.proto";
+
+/**
+The response for a SubscriptionRequest.
+*/
+message SubscriptionResponse {
+  Result result = 1; // the result of the request
+  int32 code = 2; // status code, this correlates to an http response status code
+  string note = 3; // an optional message from the SDS
+}

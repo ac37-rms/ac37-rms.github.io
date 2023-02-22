@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+import "requests/subscription_request.proto";
+import "requests/write_request.proto";
+
+/**
+  A request to either; subscribe to data, or write data.
+*/
+message Request {
+   string correlation_id = 1; // an optional field to uniquely identify responses to this request 
+
+  oneof request {
+    SubscriptionRequest subscription_request = 2; // a response to a subscription request
+    WriteRequest write_request = 3; // a response to a write request
+  }
+}

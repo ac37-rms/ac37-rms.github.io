@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+import "messages/sensor_data.proto";
+
+/**
+  A request to write sensor data.
+*/
+message WriteRequest {
+  SensorData data = 1; // the data to write
+}

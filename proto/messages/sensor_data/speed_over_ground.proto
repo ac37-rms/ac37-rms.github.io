@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+message SpeedOverGround {
+  double val = 1;
+}

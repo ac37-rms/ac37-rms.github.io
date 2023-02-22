@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+/**
+  A boundary is a wrapper of a GeoJSON object with SDS specific identifiers.
+  
+  See https://www.rfc-editor.org/rfc/rfc7946 for more details on the spec.
+*/
+message Boundary {
+  int64 id = 1; // the computer friendly name
+  string name = 2; // the human friendly name
+  string geometry = 3; // the geo json object
+  map<string, string> metadata = 4; // a collection of non-required information
+}

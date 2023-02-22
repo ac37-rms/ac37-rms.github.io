@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+/**
+A Subscription request.
+
+Only one subscription is valid per client connection, any additional subscriptions will overwrite the previous.
+
+If clients are requesting POST (non-live) data, use of stream_to/stream_from is required.
+At least one of sensors and race_id is required, both can be specified.
+*/
+message SubscriptionRequest {
+  uint64 stream_from = 1; // optional. the epoch in milliseconds from which to get POST data
+  uint64 stream_to = 2; // optional. the epoch in milliseconds to get POST data up til (inclusive)
+  repeated SensorSubscription sensors = 3; // a list of SensorSubscriptions
+  int32 race_id = 4; // optional. the ID of the race to subscribe to configuration updates to
+  // @exclude FUTURE bool batch = 5;
+}
+
+/**
+A subscription to a sensor.
+
+max_data_rate is a 'best effort' and will only return as fast as is measured.
+*/
+message SensorSubscription {
+  string sensor_id = 1; // the ID of the sensor to receive data from
+  int32 max_data_rate = 2; // optional. the maximum data rate, in Hertz (Hz), to receive data from this sensor.
+}
+

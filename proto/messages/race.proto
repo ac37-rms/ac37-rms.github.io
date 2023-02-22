@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+import "google/protobuf/timestamp.proto";
+
+import "messages/race/boundary.proto";
+import "messages/race/target_location.proto";
+import "messages/race/asset.proto";
+
+/**
+A Race configuration update.
+
+This is the current race configuration based on a recent update.
+*/
+message Race {
+  int64 id = 1; // the ID of the race
+  string name = 2; // the name of the race
+  google.protobuf.Timestamp window_start = 3; // the time the race window begins
+  google.protobuf.Timestamp window_end = 4; // the time the race window finishes
+  google.protobuf.Timestamp start_time = 5; // the time the race starts
+  repeated Boundary boundaries = 6; // a collection of boundaries that are associated with this race
+  repeated TargetLocation target_locations = 7; // a collection of target locations associated with this race
+  repeated Asset assets = 8; // a collection of assets associated with this race
+
+
+  // @exclude TODO: finish this
+}

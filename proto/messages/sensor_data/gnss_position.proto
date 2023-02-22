@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+message GNSSPosition {
+  double lat = 1;
+  double lon = 2;
+  double alt = 3;
+}

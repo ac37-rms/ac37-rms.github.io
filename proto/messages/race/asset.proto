@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+/**
+  An Asset is a single vehicle, probably a boat or a buoy.
+*/
+message Asset {
+  int64 id = 1; // the computer friendly name
+  string name = 2; // the human friendly name
+}

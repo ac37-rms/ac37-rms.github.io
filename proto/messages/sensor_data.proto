@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+import "google/protobuf/timestamp.proto";
+import "messages/sensor_data/gnss_position.proto";
+import "messages/sensor_data/orientation.proto";
+import "messages/sensor_data/course_over_ground.proto";
+import "messages/sensor_data/speed_over_ground.proto";
+
+/**
+A datapoint for a single sensor.
+
+Note that all measurements are relative to the asset's centerpoint (as described in the class rule), NOT the sensor. @Tom fix the wording of 'centerpoint' to match CR.
+*/
+message SensorData {
+  google.protobuf.Timestamp ts = 1; // the time at which this measurement was recorded
+  int32 sensor_id = 2; // the ID of the sensor which recorded the measurement
+
+  oneof data {
+    GNSSPosition gnss_position = 3 [json_name="pos"]; // the GNSS position of the asset
+    Orientation orientation = 4 [json_name="ori"]; // the orientation of the asset
+    CourseOverGround courseOverGround = 5 [json_name="cog"]; // the course the asset is taking over ground
+    SpeedOverGround speedOverGround = 6 [json_name="sog"]; // the speed the asset is travelling over ground
+  }
+}

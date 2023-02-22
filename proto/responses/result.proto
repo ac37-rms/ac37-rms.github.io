@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+/**
+The result state. 
+*/
+enum Result {
+  RESULT_UNSPECIFIED = 0;
+  RESULT_SUCCESS = 1;
+  RESULT_FAILURE = 2;
+}

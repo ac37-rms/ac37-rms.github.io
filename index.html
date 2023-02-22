@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Protocol Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #222;
+        font-family: "Ubuntu", sans-serif;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #567e25;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0;  
+      }
+
+       
+      .field-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(3) {  
+        width: 6em;
+      }
+      .field-table td:nth-child(4) {  
+        width: auto;
+      }
+
+       
+      .extension-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) {  
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) {  
+        width: auto;
+      }
+
+       
+      .enum-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) {  
+        width: auto;
+      }
+
+       
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+       
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+       
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+       
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #89ba48;
+        background-color: #dff0c8;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#a_introduction.proto">a_introduction.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.Introduction"><span class="badge">M</span>Introduction</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#message.proto">message.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.Message"><span class="badge">M</span>Message</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#messages%2frace.proto">messages/race.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.Race"><span class="badge">M</span>Race</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#messages%2frace%2fasset.proto">messages/race/asset.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.Asset"><span class="badge">M</span>Asset</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#messages%2frace%2fboundary.proto">messages/race/boundary.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.Boundary"><span class="badge">M</span>Boundary</a>
+                </li>
+              
+                <li>
+                  <a href="#SDS.Proto.Boundary.MetadataEntry"><span class="badge">M</span>Boundary.MetadataEntry</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#messages%2frace%2ftarget_location.proto">messages/race/target_location.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.TargetLocation"><span class="badge">M</span>TargetLocation</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#messages%2fsensor_data.proto">messages/sensor_data.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.SensorData"><span class="badge">M</span>SensorData</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#messages%2fsensor_data%2fcourse_over_ground.proto">messages/sensor_data/course_over_ground.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.CourseOverGround"><span class="badge">M</span>CourseOverGround</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#messages%2fsensor_data%2fgnss_position.proto">messages/sensor_data/gnss_position.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.GNSSPosition"><span class="badge">M</span>GNSSPosition</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#messages%2fsensor_data%2forientation.proto">messages/sensor_data/orientation.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.Orientation"><span class="badge">M</span>Orientation</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#messages%2fsensor_data%2fspeed_over_ground.proto">messages/sensor_data/speed_over_ground.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.SpeedOverGround"><span class="badge">M</span>SpeedOverGround</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#request.proto">request.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.Request"><span class="badge">M</span>Request</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#requests%2fsubscription_request.proto">requests/subscription_request.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.SensorSubscription"><span class="badge">M</span>SensorSubscription</a>
+                </li>
+              
+                <li>
+                  <a href="#SDS.Proto.SubscriptionRequest"><span class="badge">M</span>SubscriptionRequest</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#requests%2fwrite_request.proto">requests/write_request.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.WriteRequest"><span class="badge">M</span>WriteRequest</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#responses%2fresult.proto">responses/result.proto</a>
+            <ul>
+              
+              
+                <li>
+                  <a href="#SDS.Proto.Result"><span class="badge">E</span>Result</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#responses%2fsubscription_response.proto">responses/subscription_response.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.SubscriptionResponse"><span class="badge">M</span>SubscriptionResponse</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#responses%2fwrite_response.proto">responses/write_response.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.WriteResponse"><span class="badge">M</span>WriteResponse</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="a_introduction.proto">a_introduction.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.Introduction">Introduction</h3>
+        <p>Welcome to the AC37 RMS protocol documentation.</p><p>TODO: basic client connection info & such.</p><p>Any data sent to the RMS Shore Data System (SDS) should be in the format of 'request.proto'.</p><p>All data received from the SDS will be in the format of 'message.proto'.</p>
+
+        
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="message.proto">message.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.Message">Message</h3>
+        <p>A message from the SDS. This may include a request response, sensor data, or race data.</p><p>Basic client usage should deserialise to this message.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>correlation_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>a optional unique identifier matching a requests&#39; correlation_id </p></td>
+                </tr>
+              
+                <tr>
+                  <td>subscription_response</td>
+                  <td><a href="#SDS.Proto.SubscriptionResponse">SubscriptionResponse</a></td>
+                  <td></td>
+                  <td><p>a subscription response </p></td>
+                </tr>
+              
+                <tr>
+                  <td>write_response</td>
+                  <td><a href="#SDS.Proto.WriteResponse">WriteResponse</a></td>
+                  <td></td>
+                  <td><p>a sensor data write response </p></td>
+                </tr>
+              
+                <tr>
+                  <td>sensor_data</td>
+                  <td><a href="#SDS.Proto.SensorData">SensorData</a></td>
+                  <td></td>
+                  <td><p>a single sensor data point </p></td>
+                </tr>
+              
+                <tr>
+                  <td>race</td>
+                  <td><a href="#SDS.Proto.Race">Race</a></td>
+                  <td></td>
+                  <td><p>a race configuration update </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="messages/race.proto">messages/race.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.Race">Race</h3>
+        <p>A Race configuration update.</p><p>This is the current race configuration based on a recent update.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>the ID of the race </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the name of the race </p></td>
+                </tr>
+              
+                <tr>
+                  <td>window_start</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>the time the race window begins </p></td>
+                </tr>
+              
+                <tr>
+                  <td>window_end</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>the time the race window finishes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>start_time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>the time the race starts </p></td>
+                </tr>
+              
+                <tr>
+                  <td>boundaries</td>
+                  <td><a href="#SDS.Proto.Boundary">Boundary</a></td>
+                  <td>repeated</td>
+                  <td><p>a collection of boundaries that are associated with this race </p></td>
+                </tr>
+              
+                <tr>
+                  <td>target_locations</td>
+                  <td><a href="#SDS.Proto.TargetLocation">TargetLocation</a></td>
+                  <td>repeated</td>
+                  <td><p>a collection of target locations associated with this race </p></td>
+                </tr>
+              
+                <tr>
+                  <td>assets</td>
+                  <td><a href="#SDS.Proto.Asset">Asset</a></td>
+                  <td>repeated</td>
+                  <td><p>a collection of assets associated with this race </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="messages/race/asset.proto">messages/race/asset.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.Asset">Asset</h3>
+        <p>An Asset is a single vehicle, probably a boat or a buoy.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>the computer friendly name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the human friendly name </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="messages/race/boundary.proto">messages/race/boundary.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.Boundary">Boundary</h3>
+        <p>A boundary is a wrapper of a GeoJSON object with SDS specific identifiers.</p><p>See https://www.rfc-editor.org/rfc/rfc7946 for more details on the spec.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>the computer friendly name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the human friendly name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>geometry</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the geo json object </p></td>
+                </tr>
+              
+                <tr>
+                  <td>metadata</td>
+                  <td><a href="#SDS.Proto.Boundary.MetadataEntry">Boundary.MetadataEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>a collection of non-required information </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="SDS.Proto.Boundary.MetadataEntry">Boundary.MetadataEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="messages/race/target_location.proto">messages/race/target_location.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.TargetLocation">TargetLocation</h3>
+        <p>A target location is a GNSS position with SDS specific identifiers.</p><p>These are used by the Race Director for conveying intended buoy location(s), and by Safety Officer(s) to convey safety buoy location(s).</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>the computer friendly name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the human friendly name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>location</td>
+                  <td><a href="#SDS.Proto.GNSSPosition">GNSSPosition</a></td>
+                  <td></td>
+                  <td><p>the target gnss position </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="messages/sensor_data.proto">messages/sensor_data.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.SensorData">SensorData</h3>
+        <p>A datapoint for a single sensor.</p><p>Note that all measurements are relative to the asset's centerpoint (as described in the class rule), NOT the sensor. @Tom fix the wording of 'centerpoint' to match CR.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>ts</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>the time at which this measurement was recorded </p></td>
+                </tr>
+              
+                <tr>
+                  <td>sensor_id</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>the ID of the sensor which recorded the measurement </p></td>
+                </tr>
+              
+                <tr>
+                  <td>gnss_position</td>
+                  <td><a href="#SDS.Proto.GNSSPosition">GNSSPosition</a></td>
+                  <td></td>
+                  <td><p>the GNSS position of the asset </p></td>
+                </tr>
+              
+                <tr>
+                  <td>orientation</td>
+                  <td><a href="#SDS.Proto.Orientation">Orientation</a></td>
+                  <td></td>
+                  <td><p>the orientation of the asset </p></td>
+                </tr>
+              
+                <tr>
+                  <td>courseOverGround</td>
+                  <td><a href="#SDS.Proto.CourseOverGround">CourseOverGround</a></td>
+                  <td></td>
+                  <td><p>the course the asset is taking over ground </p></td>
+                </tr>
+              
+                <tr>
+                  <td>speedOverGround</td>
+                  <td><a href="#SDS.Proto.SpeedOverGround">SpeedOverGround</a></td>
+                  <td></td>
+                  <td><p>the speed the asset is travelling over ground </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="messages/sensor_data/course_over_ground.proto">messages/sensor_data/course_over_ground.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.CourseOverGround">CourseOverGround</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>val</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="messages/sensor_data/gnss_position.proto">messages/sensor_data/gnss_position.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.GNSSPosition">GNSSPosition</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>lat</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>lon</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>alt</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="messages/sensor_data/orientation.proto">messages/sensor_data/orientation.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.Orientation">Orientation</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>x</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>y</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>z</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>w</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="messages/sensor_data/speed_over_ground.proto">messages/sensor_data/speed_over_ground.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.SpeedOverGround">SpeedOverGround</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>val</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="request.proto">request.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.Request">Request</h3>
+        <p>A request to either; subscribe to data, or write data.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>correlation_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>an optional field to uniquely identify responses to this request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>subscription_request</td>
+                  <td><a href="#SDS.Proto.SubscriptionRequest">SubscriptionRequest</a></td>
+                  <td></td>
+                  <td><p>a response to a subscription request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>write_request</td>
+                  <td><a href="#SDS.Proto.WriteRequest">WriteRequest</a></td>
+                  <td></td>
+                  <td><p>a response to a write request </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="requests/subscription_request.proto">requests/subscription_request.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.SensorSubscription">SensorSubscription</h3>
+        <p>A subscription to a sensor.</p><p>max_data_rate is a 'best effort' and will only return as fast as is measured.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>sensor_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the ID of the sensor to receive data from </p></td>
+                </tr>
+              
+                <tr>
+                  <td>max_data_rate</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>optional. the maximum data rate, in Hertz (Hz), to receive data from this sensor. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="SDS.Proto.SubscriptionRequest">SubscriptionRequest</h3>
+        <p>A Subscription request.</p><p>Only one subscription is valid per client connection, any additional subscriptions will overwrite the previous.</p><p>If clients are requesting POST (non-live) data, use of stream_to/stream_from is required.</p><p>At least one of sensors and race_id is required, both can be specified.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>stream_from</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>optional. the epoch in milliseconds from which to get POST data </p></td>
+                </tr>
+              
+                <tr>
+                  <td>stream_to</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>optional. the epoch in milliseconds to get POST data up til (inclusive) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>sensors</td>
+                  <td><a href="#SDS.Proto.SensorSubscription">SensorSubscription</a></td>
+                  <td>repeated</td>
+                  <td><p>a list of SensorSubscriptions </p></td>
+                </tr>
+              
+                <tr>
+                  <td>race_id</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>optional. the ID of the race to subscribe to configuration updates to </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="requests/write_request.proto">requests/write_request.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.WriteRequest">WriteRequest</h3>
+        <p>A request to write sensor data.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#SDS.Proto.SensorData">SensorData</a></td>
+                  <td></td>
+                  <td><p>the data to write </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="responses/result.proto">responses/result.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+
+      
+        <h3 id="SDS.Proto.Result">Result</h3>
+        <p>The result state.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>RESULT_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>RESULT_SUCCESS</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>RESULT_FAILURE</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="responses/subscription_response.proto">responses/subscription_response.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.SubscriptionResponse">SubscriptionResponse</h3>
+        <p>The response for a SubscriptionRequest.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>result</td>
+                  <td><a href="#SDS.Proto.Result">Result</a></td>
+                  <td></td>
+                  <td><p>the result of the request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>code</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>status code, this correlates to an http response status code </p></td>
+                </tr>
+              
+                <tr>
+                  <td>note</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>an optional message from the SDS </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="responses/write_response.proto">responses/write_response.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.WriteResponse">WriteResponse</h3>
+        <p>The response for a WriteRequest.</p><p>This is only intended for use by RMS controlled devices.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>ts</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>the time at which the sensor data was measured </p></td>
+                </tr>
+              
+                <tr>
+                  <td>sensor_id</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>the ID of the sensor which measured </p></td>
+                </tr>
+              
+                <tr>
+                  <td>result</td>
+                  <td><a href="#SDS.Proto.Result">Result</a></td>
+                  <td></td>
+                  <td><p>the result of the request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>code</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>status code, this correlates to an http response status code </p></td>
+                </tr>
+              
+                <tr>
+                  <td>note</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>an optional message from the SDS </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++</td><td>Java</td><td>Python</td><td>Go</td><td>C#</td><td>PHP</td><td>Ruby</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+            <td>float64</td>
+            <td>double</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+            <td>float32</td>
+            <td>float</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+            <td>bool</td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>TrueClass/FalseClass</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+            <td>string</td>
+            <td>string</td>
+            <td>string</td>
+            <td>String (UTF-8)</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+            <td>[]byte</td>
+            <td>ByteString</td>
+            <td>string</td>
+            <td>String (ASCII-8BIT)</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+

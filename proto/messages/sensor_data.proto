@@ -4,7 +4,6 @@ package SDS.Proto;
 
 option csharp_namespace = "AmericasCup";
 
-import "google/protobuf/timestamp.proto";
 import "messages/sensor_data/gnss_position.proto";
 import "messages/sensor_data/orientation.proto";
 import "messages/sensor_data/course_over_ground.proto";
@@ -16,7 +15,7 @@ A datapoint for a single sensor.
 Note that all measurements are relative to the asset's centerpoint (as described in the class rule), NOT the sensor. @Tom fix the wording of 'centerpoint' to match CR.
 */
 message SensorData {
-  google.protobuf.Timestamp ts = 1; // the time at which this measurement was recorded
+  int64 ts = 1; // the time at which this measurement was recorded
   int32 sensor_id = 2; // the ID of the sensor which recorded the measurement
 
   oneof data {

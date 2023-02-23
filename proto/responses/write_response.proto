@@ -12,7 +12,7 @@ The response for a WriteRequest.
 This is only intended for use by RMS controlled devices.
 */
 message WriteResponse {
-  int64 ts = 1; // the time at which the sensor data was measured
+  int64 timestamp = 1; // the time at which the sensor data was measured
   int32 sensor_id = 2; // the ID of the sensor which measured
   Result result = 3; // the result of the request
   int32 code = 4;  // status code, this correlates to an http response status code

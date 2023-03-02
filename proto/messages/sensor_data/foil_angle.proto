@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+/**
+  Foil Angle data point.
+  
+  Angles are measured how?!
+*/
+message FoilAngle {
+  oneof val {
+    double port = 1;
+    double stbd = 2;
+  }
+}

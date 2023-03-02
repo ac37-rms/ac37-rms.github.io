@@ -299,11 +299,41 @@
         
           
           <li>
+            <a href="#messages%2fsensor_data%2ffoil_angle.proto">messages/sensor_data/foil_angle.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.FoilAngle"><span class="badge">M</span>FoilAngle</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#messages%2fsensor_data%2fgnss_position.proto">messages/sensor_data/gnss_position.proto</a>
             <ul>
               
                 <li>
                   <a href="#SDS.Proto.GNSSPosition"><span class="badge">M</span>GNSSPosition</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#messages%2fsensor_data%2fheading.proto">messages/sensor_data/heading.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.Heading"><span class="badge">M</span>Heading</a>
                 </li>
               
               
@@ -810,7 +840,7 @@
 
       
         <h3 id="SDS.Proto.SensorData">SensorData</h3>
-        <p>A datapoint for a single sensor.</p><p>Note that all measurements are relative to the asset's centerpoint (as described in the class rule), NOT the sensor. @Tom fix the wording of 'centerpoint' to match CR.</p>
+        <p>A datapoint for a single sensor.</p><p>Note that all measurements are relative to the asset's origin, which is the intersection of TRP, LCP and MWP - see the class rule for details.</p>
 
         
           <table class="field-table">
@@ -848,17 +878,24 @@
                 </tr>
               
                 <tr>
-                  <td>courseOverGround</td>
+                  <td>course_over_ground</td>
                   <td><a href="#SDS.Proto.CourseOverGround">CourseOverGround</a></td>
                   <td></td>
                   <td><p>the course the asset is taking over ground </p></td>
                 </tr>
               
                 <tr>
-                  <td>speedOverGround</td>
+                  <td>speed_over_ground</td>
                   <td><a href="#SDS.Proto.SpeedOverGround">SpeedOverGround</a></td>
                   <td></td>
                   <td><p>the speed the asset is travelling over ground </p></td>
+                </tr>
+              
+                <tr>
+                  <td>heading</td>
+                  <td><a href="#SDS.Proto.Heading">Heading</a></td>
+                  <td></td>
+                  <td><p>the heading the asset is pointing </p></td>
                 </tr>
               
             </tbody>
@@ -915,6 +952,51 @@
     
       
       <div class="file-heading">
+        <h2 id="messages/sensor_data/foil_angle.proto">messages/sensor_data/foil_angle.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.FoilAngle">FoilAngle</h3>
+        <p>Foil Angle data point.</p><p>Angles are measured how?!</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>port</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>stbd</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
         <h2 id="messages/sensor_data/gnss_position.proto">messages/sensor_data/gnss_position.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
@@ -946,6 +1028,44 @@
               
                 <tr>
                   <td>alt</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="messages/sensor_data/heading.proto">messages/sensor_data/heading.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.Heading">Heading</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>val</td>
                   <td><a href="#double">double</a></td>
                   <td></td>
                   <td><p> </p></td>

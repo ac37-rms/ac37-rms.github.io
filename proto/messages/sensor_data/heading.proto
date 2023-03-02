@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+message Heading {
+  double val = 1;
+}

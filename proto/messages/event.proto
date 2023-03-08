@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+import "messages/event/boundary_intersection.proto";
+
+/**
+An event that has occurred during a race
+
+An event describes a specific occurrance during a race
+*/
+message Event {
+  int64 timestamp = 1;
+
+  oneof event {
+    BoundaryIntersection boundary_intersection = 2;
+  }
+}

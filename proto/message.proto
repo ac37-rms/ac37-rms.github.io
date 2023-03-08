@@ -8,6 +8,7 @@ import "responses/subscription_response.proto";
 import "responses/write_response.proto";
 import "messages/sensor_data.proto";
 import "messages/race.proto";
+import "messages/event.proto";
 
 /**
   A message from the SDS. This may include a request response, sensor data, or race data.
@@ -22,5 +23,6 @@ message Message {
     WriteResponse write_response = 3; // a sensor data write response
     SensorData sensor_data = 4; // a single sensor data point
     Race race = 5; // a race configuration update
+    Event event = 6; // a race event
   }
 }

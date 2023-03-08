@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package SDS.Proto;
+
+option csharp_namespace = "AmericasCup";
+
+import "types/boundary_type.proto";
+
+// An enum describing the direction of the boundary intersection
+enum BoundaryIntersectionDirection {
+  BOUNDARY_INTERSECTION_DIRECTION_UNSPECIFIED = 0;
+
+  // The asset is entering the boundary
+  BOUNDARY_INTERSECTION_DIRECTION_ENTERING = 1;
+
+  // The asset is leaving the boundary
+  BOUNDARY_INTERSECTION_DIRECTION_LEAVING = 2;
+}
+
+/*
+An event triggered when a yacht intersects a boundary
+*/
+message BoundaryIntersection {
+  // Latitude of the boundary intersection point
+  double lat = 1;
+
+  // Longitude of the boundary intersection point
+  double lon = 2;
+
+  // The ID of the asset (yacht) that was involved in the boundary intersection
+  string asset_id = 3;
+
+  // The type of boundary
+  BoundaryType boundary_type = 4;
+
+  // The direction of travel
+  BoundaryIntersectionDirection direction = 5;
+}

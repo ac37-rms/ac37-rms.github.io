@@ -205,6 +205,40 @@
         
           
           <li>
+            <a href="#messages%2fevent.proto">messages/event.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.Event"><span class="badge">M</span>Event</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#messages%2fevent%2fboundary_intersection.proto">messages/event/boundary_intersection.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#SDS.Proto.BoundaryIntersection"><span class="badge">M</span>BoundaryIntersection</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#SDS.Proto.BoundaryIntersectionDirection"><span class="badge">E</span>BoundaryIntersectionDirection</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#messages%2frace.proto">messages/race.proto</a>
             <ul>
               
@@ -466,6 +500,21 @@
             </ul>
           </li>
         
+          
+          <li>
+            <a href="#types%2fboundary_type.proto">types/boundary_type.proto</a>
+            <ul>
+              
+              
+                <li>
+                  <a href="#SDS.Proto.BoundaryType"><span class="badge">E</span>BoundaryType</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
         <li><a href="#scalar-value-types">Scalar Value Types</a></li>
       </ul>
     </div>
@@ -544,6 +593,13 @@
                   <td><p>a race configuration update </p></td>
                 </tr>
               
+                <tr>
+                  <td>event</td>
+                  <td><a href="#SDS.Proto.Event">Event</a></td>
+                  <td></td>
+                  <td><p>a race event </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -552,6 +608,146 @@
         
       
 
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="messages/event.proto">messages/event.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.Event">Event</h3>
+        <p>An event that has occurred during a race</p><p>An event describes a specific occurrance during a race</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>timestamp</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>boundary_intersection</td>
+                  <td><a href="#SDS.Proto.BoundaryIntersection">BoundaryIntersection</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="messages/event/boundary_intersection.proto">messages/event/boundary_intersection.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="SDS.Proto.BoundaryIntersection">BoundaryIntersection</h3>
+        <p>An event triggered when a yacht intersects a boundary</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>lat</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>Latitude of the boundary intersection point </p></td>
+                </tr>
+              
+                <tr>
+                  <td>lon</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>Longitude of the boundary intersection point </p></td>
+                </tr>
+              
+                <tr>
+                  <td>asset_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The ID of the asset (yacht) that was involved in the boundary intersection </p></td>
+                </tr>
+              
+                <tr>
+                  <td>boundary_type</td>
+                  <td><a href="#SDS.Proto.BoundaryType">BoundaryType</a></td>
+                  <td></td>
+                  <td><p>The type of boundary </p></td>
+                </tr>
+              
+                <tr>
+                  <td>direction</td>
+                  <td><a href="#SDS.Proto.BoundaryIntersectionDirection">BoundaryIntersectionDirection</a></td>
+                  <td></td>
+                  <td><p>The direction of travel </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="SDS.Proto.BoundaryIntersectionDirection">BoundaryIntersectionDirection</h3>
+        <p>An enum describing the direction of the boundary intersection</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>BOUNDARY_INTERSECTION_DIRECTION_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>BOUNDARY_INTERSECTION_DIRECTION_ENTERING</td>
+                <td>1</td>
+                <td><p>The asset is entering the boundary</p></td>
+              </tr>
+            
+              <tr>
+                <td>BOUNDARY_INTERSECTION_DIRECTION_LEAVING</td>
+                <td>2</td>
+                <td><p>The asset is leaving the boundary</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
       
 
       
@@ -1517,6 +1713,49 @@
         
       
 
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="types/boundary_type.proto">types/boundary_type.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+
+      
+        <h3 id="SDS.Proto.BoundaryType">BoundaryType</h3>
+        <p>An enum describing a boundary type</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>BOUNDARY_TYPE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>BOUNDARY_TYPE_RACE</td>
+                <td>1</td>
+                <td><p>The official race boundary</p></td>
+              </tr>
+            
+              <tr>
+                <td>BOUNDARY_TYPE_SAFETY</td>
+                <td>2</td>
+                <td><p>The official safety boundary</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
       
 
       
